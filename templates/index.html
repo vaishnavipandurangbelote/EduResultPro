@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduResult Pro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🎓 EduResult Pro</h1>
+        <p>Student Result Dashboard</p>
+
+        <form method="POST">
+            <input type="text" name="name" placeholder="Student Name" required>
+            <input type="text" name="roll" placeholder="Roll Number" required>
+
+            <input type="number" name="sub1" placeholder="Python Marks" min="0" max="100" required>
+            <input type="number" name="sub2" placeholder="Java Marks" min="0" max="100" required>
+            <input type="number" name="sub3" placeholder="DBMS Marks" min="0" max="100" required>
+            <input type="number" name="sub4" placeholder="Cloud Computing Marks" min="0" max="100" required>
+            <input type="number" name="sub5" placeholder="Web Technology Marks" min="0" max="100" required>
+
+            <button type="submit">Generate Result</button>
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <h2>Result Card</h2>
+            <p><b>Name:</b> {{ result.name }}</p>
+            <p><b>Roll No:</b> {{ result.roll }}</p>
+            <p><b>Total:</b> {{ result.total }}/500</p>
+            <p><b>Percentage:</b> {{ result.percentage }}%</p>
+            <p><b>Grade:</b> {{ result.grade }}</p>
+            <p><b>Status:</b> {{ result.status }}</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+</body>
+</html>
